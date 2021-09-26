@@ -10,7 +10,7 @@
         mapboxgl.accessToken = '@ViewBag.MapboxToken';
         
         const map = new mapboxgl.Map({
-            container: 'map', // container ID
+            container: 'map', // container IDv
             style: {
                 'version': 8,
                 'sources': {
@@ -31,8 +31,24 @@
                    }
                 ]
             },
+            minZoom: 5,
+            maxZoom: 14,
             center: [174.6918153, -41.2442198],
-            zoom: 9 // starting zoom
+            zoom: 5 // starting zoom
+        });
+        
+        map.on('zoomend', (x)=> {
+            const {lng, lat} = map.getCenter();
+            const zoom = map.getZoom();
+            
+            window.location.hash = lng + ','+ lat + '&z=' + zoom; 
+        });
+        
+        map.on('moveend', (x)=> {
+            const {lng, lat} = map.getCenter();
+            const zoom = map.getZoom();
+            
+            window.location.hash = lng + ','+ lat + '&z=' + zoom; 
         });
     </script>
 }

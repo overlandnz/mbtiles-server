@@ -24,6 +24,11 @@ namespace MBTilesServer.Controllers
                     }
                 );
 
+                if (tile == null)
+                {
+                    return NotFound();
+                }
+
                 return File(tile.tile_data, "image/png");
             }
         }
