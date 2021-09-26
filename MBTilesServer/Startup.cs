@@ -50,6 +50,12 @@ namespace MBTilesServer
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    "tiles",
+                    "tiles/{zoom}/{column}/{row}",
+                    new {controller = "Tiles", action = "Index"}
+                );
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });

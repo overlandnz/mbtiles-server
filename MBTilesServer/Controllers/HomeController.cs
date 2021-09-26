@@ -20,6 +20,7 @@ namespace MBTilesServer.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.MapboxToken = ConfigurationManager.Read("Tiles:MapboxKey");
             return View();
         }
 
