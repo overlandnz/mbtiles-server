@@ -14,7 +14,7 @@ namespace MBTilesServer.Controllers
 
             using (SQLiteConnection connection = new SQLiteConnection($"DataSource={databaseName}"))
             {
-                TileModel tile = connection.QuerySingle<TileModel>(
+                TileModel tile = connection.QuerySingleOrDefault<TileModel>(
                     "select * from tiles where zoom_level = @zoom and tile_column = @column and tile_row = @row",
                     new
                     {
