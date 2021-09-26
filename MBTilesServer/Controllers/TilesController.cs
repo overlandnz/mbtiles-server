@@ -12,7 +12,7 @@ namespace MBTilesServer.Controllers
             string databaseName = ConfigurationManager.Read("Tiles:Path");
             databaseName = databaseName.Replace("{zoom}", zoom.ToString());
 
-            using (SQLiteConnection connection = new SQLiteConnection($"Data Source=={databaseName}"))
+            using (SQLiteConnection connection = new SQLiteConnection($"DataSource={databaseName}"))
             {
                 TileModel tile = connection.QuerySingle<TileModel>(
                     "select * from tiles where zoom_level = @zoom and tile_column = @column and tile_row = @row",
