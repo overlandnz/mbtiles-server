@@ -10,6 +10,8 @@ namespace MBTilesServer.Controllers
         public IActionResult Index(int zoom, int column, int row)
         {
             string databaseName = ConfigurationManager.Read("Tiles:Path");
+            
+            // Hack to support my testing DB
             databaseName = databaseName.Replace("{zoom}", zoom.ToString());
 
             using (SQLiteConnection connection = new SQLiteConnection($"DataSource={databaseName}"))
