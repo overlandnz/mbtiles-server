@@ -1,5 +1,3 @@
-using System;
-
 namespace MBTilesServer.Models
 {
     public class ErrorViewModel

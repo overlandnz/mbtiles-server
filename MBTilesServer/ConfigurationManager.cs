@@ -7,7 +7,7 @@ namespace MBTilesServer
     public static class ConfigurationManager
     {
         private static readonly IConfigurationRoot RawConfiguration;
-        public static string RuntimeEnvironment { get; private set; }
+        private static string RuntimeEnvironment { get; }
 
         static ConfigurationManager()
         {
@@ -23,7 +23,7 @@ namespace MBTilesServer
             ConfigurationBuilder builder = new ConfigurationBuilder();
             builder.Add(new JsonConfigurationSource {Path = "config.json", Optional = true});
             builder.Add(new JsonConfigurationSource {Path = "appsettings.json", Optional = true});
-            builder.Add(new JsonConfigurationSource {Path = string.Format("{0}.config.json", environment), Optional = true});
+            builder.Add(new JsonConfigurationSource {Path = $"{environment}.config.json", Optional = true});
 
             if (RuntimeEnvironment.ToLower() != "production")
             {
